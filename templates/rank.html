@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load my_tags %}
+
+
+{% block content %}
+
+<div class="page-header">
+  <h1>最新英雄榜 <small>最新排名</small></h1>
+</div>
+
+    <table class="table table-bordered">
+        <thead>
+            <th>用户</th>
+            <th>答题通过数</th>
+            <th>总答题数</th>
+            <th>正确率</th>
+        </thead>
+    <tbody>
+    {% for item in rank_list %}
+        <tr>
+        <td>{{ item.user }}</td>
+        <td>{{ item.pass_count }}</td>
+        <td>{{ item.examination_count }}</td>
+        <td>{% percent item.pass_count item.examination_count %}</td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+    </table>
+
+{% endblock %}
+
+
+
